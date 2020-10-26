@@ -14,6 +14,8 @@ function test(test){
     
     console.log(countingSheep(3))
     
+    ////////////
+    
     function powerCalculator(a, n){
       if(n === 0){
         return 1
@@ -27,6 +29,8 @@ function test(test){
     
     console.log(powerCalculator(10, 2))
     
+    /////////////////
+    
     function reverseString(string){
       if(string.length===1){
         return string
@@ -37,6 +41,8 @@ function test(test){
     
     }
     console.log(reverseString('Theo'))
+    
+    //////////
     
     function nthTri(nth){
       if(nth===1){
@@ -80,59 +86,49 @@ function test(test){
     /////////
     
     const mySmallMaze = [
-        [' ', ' ', ' '],
-        [' ', '*', ' '],
-        [' ', '*', ' '],
-        [' ', ' ', 'e']
+        [' ', ' ', ' ', '*'],
+        [' ', ' ', ' ', ' '],
+        [' ', '*', ' ', ' '],
+        [' ', ' ',' ',  'e']
     ];
     
-    // function maze(maze){
-    //   return(maze[2][2])
-    // }
-    // console.log(maze(mySmallMaze))
+    
     
     function mazeRun(maze, row, col, path=[]){
-      console.log(maze[row][col]) 
-      console.log("row:",row,"col:",col)
-    
+      //// console.log(maze[row][col]) 
+      // console.log("row:",row,"col:",col)
+      let corner = maze[row].length-1
+      console.log(corner)
       if(maze[row][col]=== 'e'){
           path.push('sucess!')
           return path
       }
     
       if(maze[row][col+1]=== ' '){
-    
-          col++
-          
-     
-          path.push('R!')
+        col++
+        path.push('R!')
         return mazeRun(maze, row, col, path)
       }
     
-           if(col===2){
-            row++
-            path.push('D!')
-            return mazeRun(maze, row, col, path)
-          }
-      
-        if(maze[row][col+1]=== 'e'){
-    
-          col++
-      
-          path.push('R!')
-        return mazeRun(maze, row, col, path)
-      }
-     
-        if(maze[row][col+1] === '*'){
-    
+      if(col===corner){
           row++
-       
           path.push('D!')
           return mazeRun(maze, row, col, path)
       }
-    
-      return path
+      
+      if(maze[row][col+1]=== 'e'){
+        col++
+        path.push('R!')
+        return mazeRun(maze, row, col, path)
+      }
+     
+      if(maze[row][col+1] === '*'){
+        row++
+        path.push('D!')
+        return mazeRun(maze, row, col, path)
+      }
     
     }
     console.log(mySmallMaze)
+    console.log('//////////////////////////////')
     console.log(mazeRun(mySmallMaze, 0, 0))
