@@ -47,6 +47,8 @@ function test(test){
     
     console.log(nthTri(6))
     
+    //////////////
+    
     function split(string, splitter, result=[""]){
     
     if(string===''){
@@ -63,3 +65,74 @@ function test(test){
     }
     
     console.log(split('20/02/2220', '/'))
+    
+    ///////////
+    
+    function fib(n){
+      if(n<2){
+        return n
+      }
+      return fib(n-1) + fib(n-2)
+    }
+    
+    console.log(fib(7))
+    
+    /////////
+    
+    const mySmallMaze = [
+        [' ', ' ', ' '],
+        [' ', '*', ' '],
+        [' ', '*', ' '],
+        [' ', ' ', 'e']
+    ];
+    
+    // function maze(maze){
+    //   return(maze[2][2])
+    // }
+    // console.log(maze(mySmallMaze))
+    
+    function mazeRun(maze, row, col, path=[]){
+      console.log(maze[row][col]) 
+      console.log("row:",row,"col:",col)
+    
+      if(maze[row][col]=== 'e'){
+          path.push('sucess!')
+          return path
+      }
+    
+      if(maze[row][col+1]=== ' '){
+    
+          col++
+          
+     
+          path.push('R!')
+        return mazeRun(maze, row, col, path)
+      }
+    
+           if(col===2){
+            row++
+            path.push('D!')
+            return mazeRun(maze, row, col, path)
+          }
+      
+        if(maze[row][col+1]=== 'e'){
+    
+          col++
+      
+          path.push('R!')
+        return mazeRun(maze, row, col, path)
+      }
+     
+        if(maze[row][col+1] === '*'){
+    
+          row++
+       
+          path.push('D!')
+          return mazeRun(maze, row, col, path)
+      }
+    
+      return path
+    
+    }
+    console.log(mySmallMaze)
+    console.log(mazeRun(mySmallMaze, 0, 0))
