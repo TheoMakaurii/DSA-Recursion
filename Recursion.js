@@ -37,3 +37,29 @@ function test(test){
     
     }
     console.log(reverseString('Theo'))
+    
+    function nthTri(nth){
+      if(nth===1){
+        return nth
+      }
+      return nth + nthTri(nth-1)
+    }
+    
+    console.log(nthTri(6))
+    
+    function split(string, splitter, result=[""]){
+    
+    if(string===''){
+      return result
+    }
+    
+    if(string[0]=== splitter){
+      result.push('')
+    }
+    else{
+      result[result.length-1]+= string[0]
+    }
+    return split(string.slice(1), splitter, result)
+    }
+    
+    console.log(split('20/02/2220', '/'))
